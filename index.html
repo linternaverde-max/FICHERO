@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalCare - Fichero de Registro Odontológico</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+                </div>
+                <h2>DentalCare</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="dashboard-tab">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="patients-tab">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span>Pacientes</span>
+                </button>
+                <button class="nav-btn" data-tab="calendar-tab">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>Calendario Citas</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="dentist-profile">
+                    <div class="dentist-avatar">DG</div>
+                    <div class="dentist-info">
+                        <h4>Dra. Gabriela Díaz</h4>
+                        <p>Odontóloga General</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-title">
+                    <h1 id="page-title">Panel de Control</h1>
+                    <p id="page-subtitle" class="text-secondary">Bienvenido de nuevo, Dra. Díaz</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <input type="text" id="global-search" placeholder="Buscar paciente...">
+                    </div>
+                    <button class="btn btn-primary" id="btn-new-patient-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span>Nuevo Paciente</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- TAB CONTENT CONTAINER -->
+            <div class="content-body">
+                
+                <!-- 1. DASHBOARD TAB -->
+                <section id="dashboard-tab" class="tab-pane active">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-primary-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-primary">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-total-patients">0</h3>
+                                <p>Pacientes Registrados</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-info-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-info">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-today-appointments">0</h3>
+                                <p>Citas para Hoy</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-success-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-success">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-attendance-rate">0%</h3>
+                                <p>Tasa de Asistencia</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon bg-warning-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-warning">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-allergies">0</h3>
+                                <p>Pacientes Alérgicos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Layout Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Upcoming Appointments Card -->
+                        <div class="card card-full-height">
+                            <div class="card-header">
+                                <h3>Citas de Hoy</h3>
+                                <span class="badge badge-info" id="today-date-badge">Hoy</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="appointment-list" id="dashboard-today-appointments">
+                                    <!-- Dynamic content -->
+                                    <p class="text-muted text-center py-4">No hay citas agendadas para hoy.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Patient Access -->
+                        <div class="card card-full-height">
+                            <div class="card-header">
+                                <h3>Pacientes Recientes</h3>
+                                <button class="btn-text" id="go-to-patients">Ver todos</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="recent-patients-list" id="dashboard-recent-patients">
+                                    <!-- Dynamic content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 2. PATIENTS TAB -->
+                <section id="patients-tab" class="tab-pane">
+                    <div class="patients-layout" id="patients-main-view">
+                        <!-- Left Panel: Patient List & Search -->
+                        <div class="patients-list-sidebar card">
+                            <div class="card-header sticky-header">
+                                <div class="search-bar search-bar-inline">
+                                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                    <input type="text" id="patients-search-input" placeholder="Buscar por nombre o alergias...">
+                                </div>
+                            </div>
+                            <div class="card-body patient-list-scrollable" id="patients-list-container">
+                                <!-- Dynamic Patient Cards -->
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Patient Profile details (Initial screen or detail view) -->
+                        <div class="patient-detail-container" id="patient-details-view">
+                            <div class="empty-detail-state card">
+                                <div class="empty-icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="64" height="64">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                                <h3>Selecciona un paciente</h3>
+                                <p>Elige un paciente del directorio para ver su ficha dental completa, citas, consultas y avances.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 3. CALENDAR TAB -->
+                <section id="calendar-tab" class="tab-pane">
+                    <div class="card">
+                        <div class="card-header justify-between">
+                            <div class="flex items-center gap-4">
+                                <h3>Agenda de Citas</h3>
+                                <div class="filter-group">
+                                    <button class="btn btn-outline-tab active" data-filter="all">Todas</button>
+                                    <button class="btn btn-outline-tab" data-filter="pending">Pendientes</button>
+                                    <button class="btn btn-outline-tab" data-filter="attended">Asistidas</button>
+                                    <button class="btn btn-outline-tab" data-filter="missed">No Asistidas</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" id="btn-schedule-appt-general">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <span>Agendar Cita</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="appointments-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Paciente</th>
+                                            <th>Teléfono</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="all-appointments-tbody">
+                                        <!-- Dynamic content -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== MODALS ==================== -->
+    
+    <!-- 1. MODAL: NUEVO PACIENTE / EDITAR PACIENTE -->
+    <div class="modal-overlay" id="modal-patient">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="modal-patient-title">Registrar Nuevo Paciente</h3>
+                <button class="btn-close modal-close-btn">&times;</button>
+            </div>
+            <form id="form-patient">
+                <input type="hidden" id="patient-id-field">
+                <div class="modal-body">
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label for="p-name">Nombre Completo *</label>
+                            <input type="text" id="p-name" required placeholder="Nombre del paciente">
+                        </div>
+                        <div class="form-group">
+                            <label for="p-age">Edad *</label>
+                            <input type="number" id="p-age" required min="0" max="120" placeholder="Ej: 34">
+                        </div>
+                        <div class="form-group">
+                            <label for="p-sex">Sexo *</label>
+                            <select id="p-sex" required>
+                                <option value="" disabled selected>Seleccione...</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-phone">Teléfono *</label>
+                            <input type="tel" id="p-phone" required placeholder="Ej: 5512345678">
+                        </div>
+                        <div class="form-group">
+                            <label for="p-consults">Nº de Consultas Programadas *</label>
+                            <input type="number" id="p-consults" required min="1" max="100" placeholder="Ej: 10">
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="p-address">Dirección *</label>
+                            <input type="text" id="p-address" required placeholder="Dirección del domicilio">
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="p-allergies" class="text-warning-label">Alergias a Medicamentos</label>
+                            <input type="text" id="p-allergies" placeholder="Ninguna / Penicilina, Ibuprofeno, etc.">
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="p-oral-problem">Descripción del Problema Bucal *</label>
+                            <textarea id="p-oral-problem" rows="3" required placeholder="Describa el diagnóstico inicial del problema bucal..."></textarea>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="p-progress-desc">Descripción del Grado de Avance Inicial</label>
+                            <textarea id="p-progress-desc" rows="2" placeholder="Diagnóstico inicial. Avance del 0%..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="modal-patient-submit-btn">Guardar Paciente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. MODAL: PROGRAMAR CITA -->
+    <div class="modal-overlay" id="modal-schedule">
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h3>Programar Cita Médica</h3>
+                <button class="btn-close modal-close-btn">&times;</button>
+            </div>
+            <form id="form-schedule">
+                <div class="modal-body">
+                    <div class="form-group" id="modal-schedule-patient-select-group">
+                        <label for="sch-patient-id">Paciente *</label>
+                        <select id="sch-patient-id" required>
+                            <option value="" disabled selected>Seleccione un paciente...</option>
+                            <!-- Dynamic populated list of patients -->
+                        </select>
+                    </div>
+                    <div class="form-group" id="modal-schedule-patient-fixed-group">
+                        <label>Paciente</label>
+                        <input type="text" id="sch-patient-name-fixed" readonly class="form-input-readonly">
+                        <input type="hidden" id="sch-patient-id-fixed">
+                    </div>
+                    <div class="form-group">
+                        <label for="sch-date">Fecha *</label>
+                        <input type="date" id="sch-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sch-time">Hora *</label>
+                        <input type="time" id="sch-time" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Agendar Cita</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. MODAL: REGISTRAR CONSULTA (CON RECETA Y PROGRESO) -->
+    <div class="modal-overlay" id="modal-consultation">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Registrar Consulta Dental</h3>
+                <button class="btn-close modal-close-btn">&times;</button>
+            </div>
+            <form id="form-consultation">
+                <input type="hidden" id="c-patient-id">
+                <input type="hidden" id="c-appt-id"> <!-- Optional: if completing a scheduled appt -->
+                <div class="modal-body">
+                    <div class="patient-banner" id="consultation-patient-banner">
+                        <div class="banner-avatar">P</div>
+                        <div class="banner-info">
+                            <h4 id="c-patient-name">Nombre del Paciente</h4>
+                            <p id="c-patient-allergies-banner" class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="form-grid pt-4">
+                        <div class="form-group">
+                            <label for="c-date">Fecha de Consulta *</label>
+                            <input type="date" id="c-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-progress-pct">Nuevo Grado de Avance (Porcentaje) *</label>
+                            <div class="progress-slider-container">
+                                <input type="range" id="c-progress-pct" min="0" max="100" value="0" step="5" oninput="document.getElementById('c-progress-pct-val').innerText = this.value + '%'">
+                                <span id="c-progress-pct-val" class="slider-value">0%</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="c-treatment">Tratamiento Realizado y Detalle de la Consulta *</label>
+                            <textarea id="c-treatment" rows="3" required placeholder="Escriba los procedimientos realizados en esta sesión..."></textarea>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="c-progress-desc">Evolución y Descripción del Grado de Avance *</label>
+                            <textarea id="c-progress-desc" rows="2" required placeholder="Escriba cómo evoluciona el problema bucal y qué falta para solucionarlo..."></textarea>
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="c-prescription">Medicamentos Recetados (Receta Médica)</label>
+                            <textarea id="c-prescription" rows="2" placeholder="Ej: Amoxicilina 500mg cada 8 horas por 7 días. Paracetamol 500mg cada 6 horas en caso de dolor."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar Consulta y Receta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
